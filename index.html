@@ -129,30 +129,20 @@
             });
         });
 
-        function generateQR() {
-            const amount = document.getElementById('amount').value || 20; // Default to 20
-            const count = document.getElementById('count').value || 1;    // Default to 1
+       function generateDefaultQR() {
             const upiId = "rohit098bej-1@oksbi";
-            
-            const totalAmount = (parseFloat(amount) * parseInt(count)).toFixed(2);
-            const upiLink = `upi://pay?pn=RohitBej&pa=${upiId}&am=${totalAmount}&cu=INR&tn=Payment`;
+            const defaultAmount = "20.00";
+            const upiLink = `upi://pay?pn=RohitBej&pa=${upiId}&am=${defaultAmount}&cu=INR&tn=Payment`;
             
             document.getElementById('qrcode').innerHTML = "";
-            
-            // Use the more reliable QRCode.js library
-            QRCode.toCanvas(document.getElementById('qrcode'), upiLink, 
-                { 
-                    width: 250,
-                    margin: 2,
-                    color: {
-                        dark: '#000000',
-                        light: '#ffffff'
-                    }
-                }, 
-                function(error) {
-                    if (error) console.error(error);
-                }
-            );
+            new QRCode(document.getElementById('qrcode'), {
+                text: upiLink,
+                width: 250,
+                height: 250,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
         }
     </script>
 </body>
