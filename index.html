@@ -99,7 +99,7 @@
             }
             
             const totalAmount = (parseFloat(amount) * parseInt(count)).toFixed(2);
-            const upiLink = `upi://pay?pa=${upiId}&am=${totalAmount}&cu=INR`;
+            const upiLink = `upi://pay?pn=RohitBej&pa=${upiId}&am=${totalAmount}&cu=INR&tn=Payment`;
             
             document.getElementById('qrcode').innerHTML = "";
             new QRCode(document.getElementById('qrcode'), {
